@@ -4,7 +4,7 @@
 <title>Boucles</title>
 </head>
 <body bgcolor=white>
-<h1>Exercices sur les boucles</h1>
+<h1>Exercices sur les boucles!!!</h1>
 <form action="#" method="post">
     <label for="inputValeur">Saisir le nombre d'étoiles stp : </label>
     <input type="text" id="inputValeur" name="valeur">
