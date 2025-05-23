@@ -1,4 +1,4 @@
-<%@page import="java.util.*"%>
+<%@page import="java.util.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
@@ -15,7 +15,6 @@
 </form>
 
 <%
-    HttpSession session = request.getSession();
     ArrayList<String[]> tasks = (ArrayList<String[]>) session.getAttribute("tasks");
 
     if (tasks == null) {
@@ -23,21 +22,21 @@
         session.setAttribute("tasks", tasks);
     }
 
-    // Ajout
+    // Ajout d'une tâche
     String titre = request.getParameter("titre");
     String description = request.getParameter("description");
     String date = request.getParameter("date");
 
     if (titre != null && description != null && date != null) {
-        String[] tache = { titre, description, date, "non" }; // non = pas encore terminée
+        String[] tache = { titre, description, date, "non" }; // "non" = pas encore terminée
         tasks.add(tache);
     }
 
-    // Terminer une tâche
+    // Marquer une tâche comme terminée
     String terminer = request.getParameter("terminer");
     if (terminer != null) {
         int i = Integer.parseInt(terminer);
-        tasks.get(i)[3] = "oui"; // on marque comme terminée
+        tasks.get(i)[3] = "oui"; // "oui" = tâche terminée
     }
 
     // Supprimer une tâche
@@ -55,7 +54,7 @@
         String[] tache = tasks.get(i);
 %>
     <li>
-        <b><%= tache[0] %></b> - <%= tache[1] %> (échéance : <%= tache[2] %>)<br>
+        <b><%= tache[0] %></b> - <%= tache[1] %> (Échéance : <%= tache[2] %>)<br>
         Statut : <%= tache[3].equals("oui") ? "✔ Terminée" : "⏳ En cours" %><br>
         <% if (!tache[3].equals("oui")) { %>
         <form method="post" style="display:inline;">
